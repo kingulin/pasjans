@@ -23,15 +23,16 @@ namespace pasjans
     /// </summary>
     public partial class MainWindow : Window
     {
-      //  public ObservableCollection<Card> talia { get; set; }
+           public ObservableCollection<Card> talia { get; set; }
+       
         public int IloscKard { get; set; }
-        List<Card> talia = new List<Card>();
+   //     List<Card> talia = new List<Card>();
         public MainWindow()
         {
             InitializeComponent();
-            IloscKard = 104;
-        //   talia = new ObservableCollection<Card>();
             DataContext = this;
+            talia = new ObservableCollection<Card>();
+            IloscKard = 104;
           talia.Add(new Card { Value = 1 });
 
         }

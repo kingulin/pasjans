@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace pasjans
 {
-    class Card : INotifyPropertyChanged
+  public  class Card : INotifyPropertyChanged
     {
         private int _value;
         private bool _IsSelected;

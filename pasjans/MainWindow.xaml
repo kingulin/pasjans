@@ -37,103 +37,104 @@
                                 <Style TargetType="Image">
                                     <Setter Property="Source" Value="img/cardBackground.png"/>
                                     <Style.Triggers>
-                                        <MultiTrigger>
-                                            <MultiTrigger.Conditions>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
                                                 <Condition Binding="{Binding Value}" Value="1"/>
                                                 <Condition Binding="{Binding IsSelected}" Value="false"/>
-                                            </MultiTrigger.Conditions>
-                                        </MultiTrigger>
-                                        <MultiTrigger>
-                                            <MultiTrigger.Conditions>
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter Property="Source" Value="img/cardBackground.png"/>
+                                        </MultiDataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
                                                 <Condition Binding="{Binding Value}" Value="2"/>
                                                 <Condition Binding="{Binding IsSelected}" Value="false"/>
-                                            </MultiTrigger.Conditions>
+                                            </MultiDataTrigger.Conditions>
                                             <Setter Property="Source" Value="img/card1.png" />
-                                        </MultiTrigger>
-                                        <MultiTrigger>
-                                            <MultiTrigger.Conditions>
+                                        </MultiDataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
                                                 <Condition Binding="{Binding Value}" Value="3"/>
                                                 <Condition Binding="{Binding IsSelected}" Value="false"/>
-                                            </MultiTrigger.Conditions>
+                                            </MultiDataTrigger.Conditions>
                                             <Setter Property="Source" Value="img/card2.png" />
-                                        </MultiTrigger>
-                                        <MultiTrigger>
-                                            <MultiTrigger.Conditions>
+                                        </MultiDataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
                                                 <Condition Binding="{Binding Value}" Value="4"/>
                                                 <Condition Binding="{Binding IsSelected}" Value="false"/>
-                                            </MultiTrigger.Conditions>
+                                            </MultiDataTrigger.Conditions>
                                             <Setter Property="Source" Value="img/card3.png" />
-                                        </MultiTrigger>
-                                        <MultiTrigger>
-                                            <MultiTrigger.Conditions>
+                                        </MultiDataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
                                                 <Condition Binding="{Binding Value}" Value="5"/>
                                                 <Condition Binding="{Binding IsSelected}" Value="false"/>
-                                            </MultiTrigger.Conditions>
+                                            </MultiDataTrigger.Conditions>
                                             <Setter Property="Source" Value="img/card4.png" />
-                                        </MultiTrigger>
-                                        <MultiTrigger>
-                                            <MultiTrigger.Conditions>
+                                        </MultiDataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
                                                 <Condition Binding="{Binding Value}" Value="6"/>
                                                 <Condition Binding="{Binding IsSelected}" Value="false"/>
-                                            </MultiTrigger.Conditions>
+                                            </MultiDataTrigger.Conditions>
                                             <Setter Property="Source" Value="img/card5.png" />
-                                        </MultiTrigger>
-                                        <MultiTrigger>
-                                            <MultiTrigger.Conditions>
+                                        </MultiDataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
                                                 <Condition Binding="{Binding Value}" Value="7"/>
                                                 <Condition Binding="{Binding IsSelected}" Value="false"/>
-                                            </MultiTrigger.Conditions>
+                                            </MultiDataTrigger.Conditions>
                                             <Setter Property="Source" Value="img/card6.png" />
-                                        </MultiTrigger>
-                                        <MultiTrigger>
-                                            <MultiTrigger.Conditions>
+                                        </MultiDataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
                                                 <Condition Binding="{Binding Value}" Value="8"/>
                                                 <Condition Binding="{Binding IsSelected}" Value="false"/>
-                                            </MultiTrigger.Conditions>
+                                            </MultiDataTrigger.Conditions>
                                             <Setter Property="Source" Value="img/card7.png" />
-                                        </MultiTrigger>
-                                        <MultiTrigger>
-                                            <MultiTrigger.Conditions>
+                                        </MultiDataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
                                                 <Condition Binding="{Binding Value}" Value="9"/>
                                                 <Condition Binding="{Binding IsSelected}" Value="false"/>
-                                            </MultiTrigger.Conditions>
+                                            </MultiDataTrigger.Conditions>
                                             <Setter Property="Source" Value="img/card8.png" />
-                                        </MultiTrigger>
-                                        <MultiTrigger>
-                                            <MultiTrigger.Conditions>
+                                        </MultiDataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
                                                 <Condition Binding="{Binding Value}" Value="10"/>
                                                 <Condition Binding="{Binding IsSelected}" Value="false"/>
-                                            </MultiTrigger.Conditions>
+                                            </MultiDataTrigger.Conditions>
                                             <Setter Property="Source" Value="img/card9.png" />
-                                        </MultiTrigger>
-                                        <MultiTrigger>
-                                            <MultiTrigger.Conditions>
+                                        </MultiDataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
                                                 <Condition Binding="{Binding Value}" Value="11"/>
                                                 <Condition Binding="{Binding IsSelected}" Value="false"/>
-                                            </MultiTrigger.Conditions>
+                                            </MultiDataTrigger.Conditions>
                                             <Setter Property="Source" Value="img/card10.png" />
-                                        </MultiTrigger>
-                                        <MultiTrigger>
-                                            <MultiTrigger.Conditions>
+                                        </MultiDataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
                                                 <Condition Binding="{Binding Value}" Value="12"/>
                                                 <Condition Binding="{Binding IsSelected}" Value="false"/>
-                                            </MultiTrigger.Conditions>
+                                            </MultiDataTrigger.Conditions>
                                             <Setter Property="Source" Value="img/jack.png" />
-                                        </MultiTrigger>
-                                        <MultiTrigger>
-                                            <MultiTrigger.Conditions>
+                                        </MultiDataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
                                                 <Condition Binding="{Binding Value}" Value="13"/>
                                                 <Condition Binding="{Binding IsSelected}" Value="false"/>
-                                            </MultiTrigger.Conditions>
+                                            </MultiDataTrigger.Conditions>
                                             <Setter Property="Source" Value="img/queen.png" />
-                                        </MultiTrigger>
-                                        <MultiTrigger>
-                                            <MultiTrigger.Conditions>
+                                        </MultiDataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
                                                 <Condition Binding="{Binding Value}" Value="14"/>
                                                 <Condition Binding="{Binding IsSelected}" Value="false"/>
-                                            </MultiTrigger.Conditions>
+                                            </MultiDataTrigger.Conditions>
                                             <Setter Property="Source" Value="img/king.png" />
-                                        </MultiTrigger>
+                                        </MultiDataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </Image.Style>
