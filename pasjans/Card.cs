@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace pasjans
 {
-    class Card
+    class Card : INotifyPropertyChanged
     {
-        private int _valueOfCard;
+        private int _value;
         private bool _IsSelected;
         public int Value
         {
-            get => _valueOfCard;
+            get => _value;
             set
             {
-                _valueOfCard = value;
+                _value = value;
                 if (PropertyChanged != null)
                 {
                     PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(Value)));
