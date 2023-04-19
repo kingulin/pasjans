@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+	<ItemGroup>
+		<Resource Include ="img/card1.png"/>
+		<Resource Include ="img/card2.png"/>
+		<Resource Include ="img/card3.png"/>
+		<Resource Include ="img/card4.png"/>
+		<Resource Include ="img/card5.png"/>
+		<Resource Include ="img/card6.png"/>
+		<Resource Include ="img/card7.png"/>
+		<Resource Include ="img/card8.png"/>
+		<Resource Include ="img/card9.png"/>
+		<Resource Include ="img/card10.png"/>
+		<Resource Include ="img/jack.png"/>
+		<Resource Include ="img/queen.png"/>
+		<Resource Include ="img/king.png"/>
+		<Resource Include ="img/cardBackground.png"/>
+	</ItemGroup>
+</Project>
