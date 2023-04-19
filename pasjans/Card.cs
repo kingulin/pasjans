@@ -11,6 +11,8 @@ namespace pasjans
     {
         private int _value;
         private bool _IsSelected;
+        private static int _y;
+        private static int _z;
         public int Value
         {
             get => _value;
@@ -35,6 +37,19 @@ namespace pasjans
                 }
 
             }
+        }
+        public int Y
+        {
+            get => _y;
+            set
+            {
+                _y = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(Y)));
+                }
+            }
+
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
