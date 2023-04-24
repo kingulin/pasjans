@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Background="DarkGreen"
         WindowState="Maximized"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" >
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -28,14 +28,14 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions >
             <RowDefinition />
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
         <Menu Height="20px" VerticalAlignment="Top">
             <MenuItem Header="Gra">
                 <MenuItem Header="Nowa gra" Click="RozdajKarty"></MenuItem>
             </MenuItem>
         </Menu>
-        <Button x:Name="newkard" Click="Kupka" Grid.Column="1" Height="115" Width="80">
+        <Button  Margin="-40" x:Name="newkard" Click="Kupka" Grid.Column="1" Height="115" Width="80">
             <Button.Background>
                 <ImageBrush ImageSource="img/cardBackground.png"/>
             </Button.Background>
@@ -45,7 +45,8 @@
             <ItemsControl Grid.Row="1" ItemsSource="{Binding talia}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Background="DarkGreen" BorderThickness="0"  Height="115" Width="80" Click="Button_Card_Click">
+
+                        <Button ClickMode="Press"  Margin="-40" Background="DarkGreen" BorderThickness="0"  Height="115" Width="80" Click="Button_Card_Click">
                             <Image   Height="115" Width="80" >
                                 <Image.Style>
                                     <Style TargetType="Image">
@@ -156,7 +157,7 @@
             <ItemsControl Grid.Row="1" ItemsSource="{Binding talia2}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Background="DarkGreen" BorderThickness="0"  Height="115" Width="80" Click="Button_Card_Click">
+                        <Button Background="DarkGreen" BorderThickness="0"  Margin="-40" Height="115" Width="80" Click="Button_Card_Click">
                             <Image   Height="115" Width="80" >
                                 <Image.Style>
                                     <Style TargetType="Image">
@@ -267,7 +268,7 @@
             <ItemsControl Grid.Row="1" ItemsSource="{Binding talia3}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Background="DarkGreen" BorderThickness="0"  Height="115" Width="80" Click="Button_Card_Click">
+                        <Button Background="DarkGreen" BorderThickness="0"  Margin="-40" Height="115" Width="80" Click="Button_Card_Click">
                             <Image   Height="115" Width="80" >
                                 <Image.Style>
                                     <Style TargetType="Image">
@@ -378,7 +379,7 @@
             <ItemsControl Grid.Row="1" ItemsSource="{Binding talia4}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Background="DarkGreen" BorderThickness="0"  Height="115" Width="80" Click="Button_Card_Click">
+                        <Button Background="DarkGreen" BorderThickness="0"  Margin="-40" Height="115" Width="80" Click="Button_Card_Click">
                             <Image   Height="115" Width="80" >
                                 <Image.Style>
                                     <Style TargetType="Image">
@@ -489,7 +490,7 @@
             <ItemsControl Grid.Row="1" ItemsSource="{Binding talia5}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Background="DarkGreen" BorderThickness="0"  Height="115" Width="80" Click="Button_Card_Click">
+                        <Button Background="DarkGreen" BorderThickness="0"  Margin="-40" Height="115" Width="80" Click="Button_Card_Click">
                             <Image   Height="115" Width="80" >
                                 <Image.Style>
                                     <Style TargetType="Image">
@@ -600,7 +601,7 @@
             <ItemsControl Grid.Row="1" ItemsSource="{Binding talia6}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Background="DarkGreen" BorderThickness="0"  Height="115" Width="80" Click="Button_Card_Click">
+                        <Button Background="DarkGreen" BorderThickness="0"  Margin="-40" Height="115" Width="80" Click="Button_Card_Click">
                             <Image   Height="115" Width="80" >
                                 <Image.Style>
                                     <Style TargetType="Image">
@@ -711,7 +712,7 @@
             <ItemsControl Grid.Row="1" ItemsSource="{Binding talia7}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Background="DarkGreen" BorderThickness="0"  Height="115" Width="80" Click="Button_Card_Click">
+                        <Button Background="DarkGreen" BorderThickness="0"  Margin="-40" Height="115" Width="80" Click="Button_Card_Click">
                             <Image   Height="115" Width="80" >
                                 <Image.Style>
                                     <Style TargetType="Image">
@@ -822,7 +823,7 @@
             <ItemsControl Grid.Row="1" ItemsSource="{Binding talia8}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Background="DarkGreen" BorderThickness="0"  Height="115" Width="80" Click="Button_Card_Click">
+                        <Button Background="DarkGreen" BorderThickness="0"  Margin="-40" Height="115" Width="80" Click="Button_Card_Click">
                             <Image   Height="115" Width="80" >
                                 <Image.Style>
                                     <Style TargetType="Image">
@@ -933,7 +934,7 @@
             <ItemsControl Grid.Row="1" ItemsSource="{Binding talia9}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Background="DarkGreen" BorderThickness="0"  Height="115" Width="80" Click="Button_Card_Click">
+                        <Button Background="DarkGreen" BorderThickness="0"  Margin="-40"  Height="115" Width="80" Click="Button_Card_Click">
                             <Image   Height="115" Width="80" >
                                 <Image.Style>
                                     <Style TargetType="Image">
@@ -1044,14 +1045,12 @@
             <ItemsControl Grid.Row="1" ItemsSource="{Binding talia10}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Background="DarkGreen" BorderThickness="0" Height="115" Width="80" Click="Button_Card_Click">
+                        <Button  Margin="-40" Background="DarkGreen" BorderThickness="0" Height="115" Width="80" Click="Button_Card_Click">
                  
                             <Image Height="115" Width="80" >
                                 <Image.Style>
                                     <Style TargetType="Image">
                                         <Setter Property="Source" Value="img/cardBackground.png"/>
-                                        <Setter Property="Canvas.Top" Value="{Binding y}"/>
-                                        <Setter Property="Canvas.ZIndex" Value="{Binding z}"/>
                                         <Style.Triggers>
                                             <MultiDataTrigger>
                                                 <MultiDataTrigger.Conditions>

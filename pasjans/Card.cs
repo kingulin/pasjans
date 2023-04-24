@@ -11,14 +11,7 @@ namespace pasjans
     {
         private int _value;
         private bool _IsSelected;
-        private  int _y;
-        private  int _z;
 
-        public Card(int y, int z)
-        {
-            _y = y;
-            _z = z;
-        }
 
         public int Value
         {
@@ -45,8 +38,7 @@ namespace pasjans
 
             }
         }
-  
-
+      
         public event PropertyChangedEventHandler? PropertyChanged;
     }
 }

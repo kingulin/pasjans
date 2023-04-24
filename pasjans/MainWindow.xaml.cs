@@ -35,7 +35,7 @@ namespace pasjans
         public ObservableCollection<Card> talia10 { get; set; }
         public ObservableCollection<int> taliaPod { get; set; }
         public int iloscRozdan;
-        public int IloscKard { get; set; }
+        public int IloscKard;
         public MainWindow()
         {
             InitializeComponent();
@@ -51,8 +51,8 @@ namespace pasjans
             talia9 = new ObservableCollection<Card>();
             talia10 = new ObservableCollection<Card>();
             taliaPod = new ObservableCollection<int>();
-            IloscKard = 104;
-            int iloscRozdan = 0;
+            int IloscKard;
+            int iloscRozdan;
 
         }
 
@@ -61,7 +61,6 @@ namespace pasjans
         {
             var button = sender as Button;
             var card = button.DataContext as Card;
-            card.IsSelected = !card.IsSelected;
         }
 
         private void TasujKarty()
@@ -78,8 +77,11 @@ namespace pasjans
         }
         private void RozdajKarty(object sender, RoutedEventArgs e)
         {
-            RozdajKartyOdwrot(3);
-
+            iloscRozdan = 0;
+            newkard.IsEnabled = true;
+            IloscKard = 104;
+            RozdajKartyOdwrot(5);
+           
         }
         private void RozdajKartyOdwrot(int x)
         {
@@ -95,20 +97,20 @@ namespace pasjans
             talia10.Clear();
             for (int i = 0; i < x; i++)
             {
-                talia.Add(new Card(0, 20));
-                talia2.Add(new Card(0, 20));
-                talia3.Add(new Card(0, 20));
-                talia4.Add(new Card(0, 20));
+                talia.Add(new Card());
+                talia2.Add(new Card());
+                talia3.Add(new Card());
+                talia4.Add(new Card());
 
             }
             for (int i = 0; i < x - 1; i++)
             {
-                talia5.Add(new Card(0, 20));
-                talia6.Add(new Card(0, 20));
-                talia7.Add(new Card(0, 20));
-                talia8.Add(new Card(0, 20));
-                talia9.Add(new Card(0, 20));
-                talia10.Add(new Card(0, 20));
+                talia5.Add(new Card());
+                talia6.Add(new Card());
+                talia7.Add(new Card());
+                talia8.Add(new Card());
+                talia9.Add(new Card());
+                talia10.Add(new Card());
 
             }
             TasujKarty();
@@ -136,7 +138,7 @@ namespace pasjans
                 var random = new Random();
                 int x = random.Next(0, IloscKard);
                 int a = taliaPod[x];
-                tal[lastIndex] = new Card(0, 20) { Value = a };
+                tal[lastIndex] = new Card() { Value = a };
                 taliaPod.RemoveAt(x);
                 IloscKard--;
             }
@@ -152,16 +154,16 @@ namespace pasjans
             else
             {
             
-            talia.Add(new Card(0, 20));
-            talia2.Add(new Card(0, 20));
-            talia3.Add(new Card(0, 20));
-            talia4.Add(new Card(0, 20));
-            talia5.Add(new Card(0, 20));
-            talia6.Add(new Card(0, 20));
-            talia7.Add(new Card(0, 20));
-            talia8.Add(new Card(0, 20));
-            talia9.Add(new Card(0, 20));
-            talia10.Add(new Card(0, 20));
+            talia.Add(new Card());
+            talia2.Add(new Card());
+            talia3.Add(new Card());
+            talia4.Add(new Card());
+            talia5.Add(new Card());
+            talia6.Add(new Card());
+            talia7.Add(new Card());
+            talia8.Add(new Card());
+            talia9.Add(new Card());
+            talia10.Add(new Card());
             OdwrocKarte(talia);
             OdwrocKarte(talia2);
             OdwrocKarte(talia3);
@@ -173,8 +175,8 @@ namespace pasjans
             OdwrocKarte(talia9);
             OdwrocKarte(talia10);
             iloscRozdan++;
-                
-                if(iloscRozdan == 5)   newkard.IsEnabled = false;
+             MessageBox.Show(IloscKard.ToString());
+            if (iloscRozdan == 5)   newkard.IsEnabled = false;
 
             } }
         private void IfWin()
