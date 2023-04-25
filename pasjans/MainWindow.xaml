@@ -46,7 +46,7 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
 
-                        <Button ClickMode="Press"  Margin="-40" Background="DarkGreen" BorderThickness="0"  Height="115" Width="80" Click="Button_Card_Click">
+                        <Button Margin="-40" Background="DarkGreen" BorderThickness="0"  Height="115" Width="80" Click="Button_Card_Click">
                             <Image   Height="115" Width="80" >
                                 <Image.Style>
                                     <Style TargetType="Image">

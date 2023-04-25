@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -54,6 +55,7 @@ namespace pasjans
             int IloscKard;
             int iloscRozdan;
 
+            
         }
 
 
@@ -61,6 +63,22 @@ namespace pasjans
         {
             var button = sender as Button;
             var card = button.DataContext as Card;
+
+            
+                card.IsChecked = !card.IsChecked;
+            
+            if (card.isOdw == true && card.IsChecked == true)
+            {
+
+                button.BorderThickness = new Thickness(3);
+                button.BorderBrush = Brushes.Red;
+
+            }
+            else
+            {
+                button.BorderThickness = new Thickness(0);
+
+            }
         }
 
         private void TasujKarty()
@@ -138,7 +156,7 @@ namespace pasjans
                 var random = new Random();
                 int x = random.Next(0, IloscKard);
                 int a = taliaPod[x];
-                tal[lastIndex] = new Card() { Value = a };
+                tal[lastIndex] = new Card() { Value = a, isOdw = true };
                 taliaPod.RemoveAt(x);
                 IloscKard--;
             }
@@ -175,7 +193,6 @@ namespace pasjans
             OdwrocKarte(talia9);
             OdwrocKarte(talia10);
             iloscRozdan++;
-             MessageBox.Show(IloscKard.ToString());
             if (iloscRozdan == 5)   newkard.IsEnabled = false;
 
             } }
@@ -186,7 +203,7 @@ namespace pasjans
 
         private void Ruch()
         {
-
+            }
         }
     }
-}
+

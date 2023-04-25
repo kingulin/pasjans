@@ -10,9 +10,33 @@ namespace pasjans
   public  class Card : INotifyPropertyChanged
     {
         private int _value;
+        public bool isOdw = false;
         private bool _IsSelected;
+        private bool isChecked;
+        private bool isCheckedSec;
 
-
+           public bool IsChecked
+    {
+        get { return isChecked; }
+        set
+        {
+            isChecked = value;
+            OnPropertyChanged("IsChecked");
+        }
+    }
+        public bool IsCheckedSec
+        {
+            get { return isCheckedSec; }
+            set
+            {
+                isCheckedSec = value;
+                OnPropertyChanged("IsCheckedSec");
+            }
+        }
+        protected void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
         public int Value
         {
             get => _value;
@@ -25,6 +49,7 @@ namespace pasjans
                 }
             }
         }
+
         public bool IsSelected
         {
             get => _IsSelected;
@@ -38,7 +63,8 @@ namespace pasjans
 
             }
         }
-      
-        public event PropertyChangedEventHandler? PropertyChanged;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
     }
 }
