@@ -13,9 +13,7 @@ namespace pasjans
         public bool isOdw = false;
         private bool _IsSelected;
         private bool isChecked;
-        private bool isCheckedSec;
-
-           public bool IsChecked
+        public bool IsChecked
     {
         get { return isChecked; }
         set
@@ -24,15 +22,6 @@ namespace pasjans
             OnPropertyChanged("IsChecked");
         }
     }
-        public bool IsCheckedSec
-        {
-            get { return isCheckedSec; }
-            set
-            {
-                isCheckedSec = value;
-                OnPropertyChanged("IsCheckedSec");
-            }
-        }
         protected void OnPropertyChanged(string propertyName)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -63,6 +52,7 @@ namespace pasjans
 
             }
         }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

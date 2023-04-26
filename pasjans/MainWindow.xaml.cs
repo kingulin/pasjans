@@ -35,12 +35,15 @@ namespace pasjans
         public ObservableCollection<Card> talia9 { get; set; }
         public ObservableCollection<Card> talia10 { get; set; }
         public ObservableCollection<int> taliaPod { get; set; }
+        public ObservableCollection<int> tabValue { get; set; }
         public int iloscRozdan;
         public int IloscKard;
+
         public MainWindow()
         {
             InitializeComponent();
             DataContext = this;
+            tabValue = new ObservableCollection<int>();
             talia = new ObservableCollection<Card>();
             talia2 = new ObservableCollection<Card>();
             talia3 = new ObservableCollection<Card>();
@@ -66,19 +69,41 @@ namespace pasjans
 
             
                 card.IsChecked = !card.IsChecked;
-            
+
             if (card.isOdw == true && card.IsChecked == true)
             {
 
-                button.BorderThickness = new Thickness(3);
-                button.BorderBrush = Brushes.Red;
+                if (tabValue.Count() <= 1)
+                {
 
+                    tabValue.Add(card.Value);
+                    MessageBox.Show(tabValue.Count().ToString() + ", " + tabValue[0].ToString() + "aa");
+                    button.BorderThickness = new Thickness(3);
+                    button.BorderBrush = Brushes.Red;
+                }
+                else
+                {
+                    button.BorderThickness = new Thickness(0);
+
+                    button.BorderThickness = new Thickness(3);
+                    button.BorderBrush = Brushes.Red;
+                    MessageBox.Show(tabValue.Count().ToString() + ", " + tabValue[0]+ "ba");
+                    tabValue.Remove(tabValue[0]);
+                    tabValue.Add(card.Value);
+                    MessageBox.Show(tabValue.Count().ToString() + ", " + tabValue[0] + "aba");
+
+                }
+                
             }
             else
             {
-                button.BorderThickness = new Thickness(0);
 
+                MessageBox.Show(tabValue.Count().ToString() + ", " + tabValue[0] + "abba");
+                tabValue.Remove(card.Value);
+                button.BorderThickness = new Thickness(0);
+               
             }
+           
         }
 
         private void TasujKarty()
