@@ -72,7 +72,7 @@ namespace pasjans
 
             if (card.isOdw == true && card.IsChecked == true)
             {
-
+           
                 if (tabValue.Count() <= 1)
                 {
 
@@ -80,17 +80,33 @@ namespace pasjans
                     MessageBox.Show(tabValue.Count().ToString() + ", " + tabValue[0].ToString() + "aa");
                     button.BorderThickness = new Thickness(3);
                     button.BorderBrush = Brushes.Red;
+                    if (tabValue.Count() == 2)
+                    {
+                        if (tabValue[0] + 1 == tabValue[1])
+                        {
+                            talia10.Add(talia[talia.Count()-1]);
+                            talia.Remove(talia[talia.Count() - 1]);
+                            OdwrocKarte(talia);
+                            button.BorderBrush = Brushes.DarkBlue;
+                            tabValue.Clear();
+                        }
+                        else
+                        {
+                            tabValue.Clear();
+                        }
+                    }
                 }
-                else
+                else 
+                
                 {
                     button.BorderThickness = new Thickness(0);
 
                     button.BorderThickness = new Thickness(3);
                     button.BorderBrush = Brushes.Red;
-                    MessageBox.Show(tabValue.Count().ToString() + ", " + tabValue[0]+ "ba");
+                   // MessageBox.Show(tabValue.Count().ToString() + ", " + tabValue[0]+ "ba");
                     tabValue.Remove(tabValue[0]);
                     tabValue.Add(card.Value);
-                    MessageBox.Show(tabValue.Count().ToString() + ", " + tabValue[0] + "aba");
+                 //   MessageBox.Show(tabValue.Count().ToString() + ", " + tabValue[0] + "aba");
 
                 }
                 
@@ -98,7 +114,7 @@ namespace pasjans
             else
             {
 
-                MessageBox.Show(tabValue.Count().ToString() + ", " + tabValue[0] + "abba");
+                //MessageBox.Show(tabValue.Count().ToString() + ", " + tabValue[0] + "abba");
                 tabValue.Remove(card.Value);
                 button.BorderThickness = new Thickness(0);
                
