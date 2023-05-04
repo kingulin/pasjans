@@ -21,5 +21,6 @@
 		<Resource Include ="img/queen.png"/>
 		<Resource Include ="img/king.png"/>
 		<Resource Include ="img/cardBackground.png"/>
+		<Resource Include ="img/blankCard.png"/>
 	</ItemGroup>
 </Project>

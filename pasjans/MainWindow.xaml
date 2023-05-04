@@ -143,6 +143,13 @@
                                                 </MultiDataTrigger.Conditions>
                                                 <Setter Property="Source" Value="img/king.png" />
                                             </MultiDataTrigger>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding Value}" Value="14"/>
+                                                    <Condition Binding="{Binding IsSelected}" Value="false"/>
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="Source" Value="img/blankCard.png" />
+                                            </MultiDataTrigger>
                                         </Style.Triggers>
                                     </Style>
                                 </Image.Style>
@@ -169,6 +176,13 @@
                                                     <Condition Binding="{Binding IsSelected}" Value="false"/>
                                                 </MultiDataTrigger.Conditions>
                                                 <Setter Property="Source" Value="img/card1.png"/>
+                                            </MultiDataTrigger>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding Value}" Value="14"/>
+                                                    <Condition Binding="{Binding IsSelected}" Value="false"/>
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="Source" Value="img/blankCard.png" />
                                             </MultiDataTrigger>
                                             <MultiDataTrigger>
                                                 <MultiDataTrigger.Conditions>
@@ -280,6 +294,13 @@
                                                     <Condition Binding="{Binding IsSelected}" Value="false"/>
                                                 </MultiDataTrigger.Conditions>
                                                 <Setter Property="Source" Value="img/card1.png"/>
+                                            </MultiDataTrigger>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding Value}" Value="14"/>
+                                                    <Condition Binding="{Binding IsSelected}" Value="false"/>
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="Source" Value="img/blankCard.png" />
                                             </MultiDataTrigger>
                                             <MultiDataTrigger>
                                                 <MultiDataTrigger.Conditions>
@@ -401,6 +422,13 @@
                                             </MultiDataTrigger>
                                             <MultiDataTrigger>
                                                 <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding Value}" Value="14"/>
+                                                    <Condition Binding="{Binding IsSelected}" Value="false"/>
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="Source" Value="img/blankCard.png" />
+                                            </MultiDataTrigger>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
                                                     <Condition Binding="{Binding Value}" Value="3"/>
                                                     <Condition Binding="{Binding IsSelected}" Value="false"/>
                                                 </MultiDataTrigger.Conditions>
@@ -502,6 +530,13 @@
                                                     <Condition Binding="{Binding IsSelected}" Value="false"/>
                                                 </MultiDataTrigger.Conditions>
                                                 <Setter Property="Source" Value="img/card1.png"/>
+                                            </MultiDataTrigger>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding Value}" Value="14"/>
+                                                    <Condition Binding="{Binding IsSelected}" Value="false"/>
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="Source" Value="img/blankCard.png" />
                                             </MultiDataTrigger>
                                             <MultiDataTrigger>
                                                 <MultiDataTrigger.Conditions>
@@ -616,6 +651,13 @@
                                             </MultiDataTrigger>
                                             <MultiDataTrigger>
                                                 <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding Value}" Value="14"/>
+                                                    <Condition Binding="{Binding IsSelected}" Value="false"/>
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="Source" Value="img/blankCard.png" />
+                                            </MultiDataTrigger>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
                                                     <Condition Binding="{Binding Value}" Value="2"/>
                                                     <Condition Binding="{Binding IsSelected}" Value="false"/>
                                                 </MultiDataTrigger.Conditions>
@@ -724,6 +766,13 @@
                                                     <Condition Binding="{Binding IsSelected}" Value="false"/>
                                                 </MultiDataTrigger.Conditions>
                                                 <Setter Property="Source" Value="img/card1.png"/>
+                                            </MultiDataTrigger>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding Value}" Value="14"/>
+                                                    <Condition Binding="{Binding IsSelected}" Value="false"/>
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="Source" Value="img/blankCard.png" />
                                             </MultiDataTrigger>
                                             <MultiDataTrigger>
                                                 <MultiDataTrigger.Conditions>
@@ -838,6 +887,13 @@
                                             </MultiDataTrigger>
                                             <MultiDataTrigger>
                                                 <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding Value}" Value="14"/>
+                                                    <Condition Binding="{Binding IsSelected}" Value="false"/>
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="Source" Value="img/blankCard.png" />
+                                            </MultiDataTrigger>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
                                                     <Condition Binding="{Binding Value}" Value="2"/>
                                                     <Condition Binding="{Binding IsSelected}" Value="false"/>
                                                 </MultiDataTrigger.Conditions>
@@ -946,6 +1002,13 @@
                                                     <Condition Binding="{Binding IsSelected}" Value="false"/>
                                                 </MultiDataTrigger.Conditions>
                                                 <Setter Property="Source" Value="img/card1.png"/>
+                                            </MultiDataTrigger>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding Value}" Value="14"/>
+                                                    <Condition Binding="{Binding IsSelected}" Value="false"/>
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="Source" Value="img/blankCard.png" />
                                             </MultiDataTrigger>
                                             <MultiDataTrigger>
                                                 <MultiDataTrigger.Conditions>
@@ -1065,6 +1128,13 @@
                                                     <Condition Binding="{Binding IsSelected}" Value="false"/>
                                                 </MultiDataTrigger.Conditions>
                                                 <Setter Property="Source" Value="img/card2.png" />
+                                            </MultiDataTrigger>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding Value}" Value="14"/>
+                                                    <Condition Binding="{Binding IsSelected}" Value="false"/>
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="Source" Value="img/blankCard.png" />
                                             </MultiDataTrigger>
                                             <MultiDataTrigger>
                                                 <MultiDataTrigger.Conditions>

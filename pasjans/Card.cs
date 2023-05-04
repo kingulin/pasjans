@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,14 @@ namespace pasjans
         public bool isOdw = false;
         private bool _IsSelected;
         private bool isChecked;
+        public ObservableCollection<Card> Talia { get; set; }
+        public object naztali;
+
+        public Card(object naztali)
+        {
+            this.naztali = naztali;
+        }
+
         public bool IsChecked
     {
         get { return isChecked; }
