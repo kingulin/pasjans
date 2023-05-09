@@ -36,8 +36,12 @@ namespace pasjans
         public ObservableCollection<Card> talia10 { get; set; }
         public ObservableCollection<int> taliaPod { get; set; }
         public ObservableCollection<int> tabValue { get; set; }
+
+        private ObservableCollection<int> _collection = new ObservableCollection<int>();
+
         public ObservableCollection<ObservableCollection<Card>> tabliaZbior { get; set; }
         public int iloscRozdan;
+        public Card cards;
         public int IloscKard;
         public MainWindow()
         {
@@ -62,10 +66,35 @@ namespace pasjans
         }
         private object firstSelectedCard = null;
         private object secondSelectedCard = null;
+        private void test()
+        {
+            if (cards != null)
+            {
+                MessageBox.Show(cards.isOdw.ToString(), "Message Box Title", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else MessageBox.Show("da", "Message Box Title", MessageBoxButton.OK, MessageBoxImage.Information);
+
+        }
+
+
+        public ObservableCollection<int> CreateObservableCollection()
+        {
+            int a = 3;
+            int b = 2;
+            if (a > b)
+            {
+                _collection = new ObservableCollection<int> { a, b };
+            }
+
+          
+
+            return _collection;
+        }
 
         private void Button_Card_Click(object sender, RoutedEventArgs e)
         {
-            var button = sender as Button;
+            CreateObservableCollection();
+                var button = sender as Button;
             var card = button.DataContext as Card;
 
 
@@ -86,8 +115,13 @@ namespace pasjans
                     button.BorderBrush = Brushes.Red;
                     if (tabValue.Count() == 2)
                     {
-                        if (tabValue[0] - 1 == tabValue[1])
+                        if (tabValue[0] - 1 == tabValue[1] || tabValue[0] == 14)
                         {
+                            if (tabValue[0] == 14)
+                            {
+                                tabliaZbior[0].Remove(tabliaZbior[0][0]);
+
+                            }
                             var i = 0;
                             var k = 0;
                             while (secondSelectedCard != tabliaZbior[i] )
@@ -113,8 +147,8 @@ namespace pasjans
                            
                                 tabliaZbior[k].Add(tabliaZbior[i][tabliaZbior[i].Count() - 1]);
                                 tabliaZbior[i].Remove(tabliaZbior[i][tabliaZbior[i].Count() - 1]);
-                            card.naztali = firstSelectedCard;
-                            OdwrocKarte(tabliaZbior[i]);
+                                card.naztali = firstSelectedCard;
+                                OdwrocKarte(tabliaZbior[i]);
                                 button.BorderBrush = Brushes.DarkBlue;
                                 tabValue.Clear();
                             
@@ -226,6 +260,7 @@ namespace pasjans
 
         private void OdwrocKarte(ObservableCollection<Card> tal)
         {
+           
             if (taliaPod.Count() == 0)
             {
                 MessageBox.Show("Najpierw zacznij gre!", "Zacznij Gre", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -289,9 +324,9 @@ namespace pasjans
 
         }
 
-        private void Ruch()
-        {
-            }
+
         }
+
+
     }
 
