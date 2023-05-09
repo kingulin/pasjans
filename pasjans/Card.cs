@@ -1,40 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pasjans
 {
-  public  class Card : INotifyPropertyChanged
+    public class Card : INotifyPropertyChanged
     {
         private int _value;
         public bool isOdw = false;
         private bool _IsSelected;
         private bool isChecked;
         public ObservableCollection<Card> Talia { get; set; }
-        public object naztali;
+        public int naztali;
 
-        public Card(object naztali)
+        public Card(int naztali)
         {
             this.naztali = naztali;
         }
 
         public bool IsChecked
-    {
-        get { return isChecked; }
-        set
         {
-            isChecked = value;
-            OnPropertyChanged("IsChecked");
+            get { return isChecked; }
+            set
+            {
+                isChecked = value;
+                OnPropertyChanged("IsChecked");
+            }
         }
-    }
         protected void OnPropertyChanged(string propertyName)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         public int Value
         {
             get => _value;

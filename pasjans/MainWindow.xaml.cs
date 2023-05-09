@@ -1,20 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using static System.Formats.Asn1.AsnWriter;
 
 namespace pasjans
 {
@@ -64,37 +53,16 @@ namespace pasjans
             int iloscRozdan;
 
         }
-        private object firstSelectedCard = null;
-        private object secondSelectedCard = null;
-        private void test()
-        {
-            if (cards != null)
-            {
-                MessageBox.Show(cards.isOdw.ToString(), "Message Box Title", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            else MessageBox.Show("da", "Message Box Title", MessageBoxButton.OK, MessageBoxImage.Information);
+        private Card firstSelectedCard;
+        private Button firstSelectedButton;
+        private Card secondSelectedCard;
+        private Button secondSelectedButton;
 
-        }
-
-
-        public ObservableCollection<int> CreateObservableCollection()
-        {
-            int a = 3;
-            int b = 2;
-            if (a > b)
-            {
-                _collection = new ObservableCollection<int> { a, b };
-            }
-
-          
-
-            return _collection;
-        }
 
         private void Button_Card_Click(object sender, RoutedEventArgs e)
         {
-            CreateObservableCollection();
-                var button = sender as Button;
+            //CreateObservableCollection();
+            var button = sender as Button;
             var card = button.DataContext as Card;
 
 
@@ -102,86 +70,75 @@ namespace pasjans
 
             if (card.isOdw == true && card.IsChecked == true)
             {
-                     
-                if(tabValue.Count() == 0)
+                ObservableCollection<Card> curTalia = tabliaZbior[card.naztali];
+                // if(tabValue.Count() == 0)
+                if (firstSelectedCard == null && curTalia.ElementAt(curTalia.Count() - 1) == card)
                 {
-                    firstSelectedCard = card.naztali;
+                    firstSelectedButton = button;
+                    firstSelectedCard = card;
+                    button.BorderThickness = new Thickness(3);
+                    button.BorderBrush = Brushes.Yellow;
                 }
-                if (tabValue.Count() <= 1)
+                else if (firstSelectedCard != null)
                 {
-                    secondSelectedCard = card.naztali;
-                    tabValue.Add(card.Value);
+                    secondSelectedButton = button;
+                    secondSelectedCard = card;
+                    //tabValue.Add(card.Value);
                     button.BorderThickness = new Thickness(3);
                     button.BorderBrush = Brushes.Red;
-                    if (tabValue.Count() == 2)
+                }
+                if (firstSelectedCard != null && secondSelectedCard != null)
+                {
+                    if (firstSelectedCard.Value - 1 == secondSelectedCard.Value || firstSelectedCard.Value == 14)
                     {
-                        if (tabValue[0] - 1 == tabValue[1] || tabValue[0] == 14)
+                        if (firstSelectedCard.Value == 14)
                         {
-                            if (tabValue[0] == 14)
-                            {
-                                tabliaZbior[0].Remove(tabliaZbior[0][0]);
+                            tabliaZbior[0].Remove(tabliaZbior[0][0]);
 
-                            }
-                            var i = 0;
-                            var k = 0;
-                            while (secondSelectedCard != tabliaZbior[i] )
-                            {if (i != 9)
-                                {
-                                    i++;
-                                }else
-                                {
-                                    MessageBox.Show("blond i");
-                                }
-                            }
-                            while (firstSelectedCard != tabliaZbior[k])
-                            {
-                                if (k != 9)
-                                {
-                                    k++;
-                                }
-                                else
-                                {
-                                    MessageBox.Show("blond k");
-                                }
-                            }
-                           
-                                tabliaZbior[k].Add(tabliaZbior[i][tabliaZbior[i].Count() - 1]);
-                                tabliaZbior[i].Remove(tabliaZbior[i][tabliaZbior[i].Count() - 1]);
-                                card.naztali = firstSelectedCard;
-                                OdwrocKarte(tabliaZbior[i]);
-                                button.BorderBrush = Brushes.DarkBlue;
-                                tabValue.Clear();
-                            
                         }
-                     
+                        var i = 0;
+                        var k = 0;
+                        while (tabliaZbior[secondSelectedCard.naztali] != tabliaZbior[i])
+                        {
+                            if (i != 9)
+                            {
+                                i++;
+                            }
+                            else
+                            {
+                                MessageBox.Show("blond i");
+                            }
+                        }
+                        while (tabliaZbior[firstSelectedCard.naztali] != tabliaZbior[k])
+                        {
+                            if (k != 9)
+                            {
+                                k++;
+                            }
+                            else
+                            {
+                                MessageBox.Show("blond k");
+                            }
+                        }
+
+
+                        tabliaZbior[k].Add(tabliaZbior[i][tabliaZbior[i].Count() - 1]);
+                        tabliaZbior[i].Remove(tabliaZbior[i][tabliaZbior[i].Count() - 1]);
+                        //card.naztali = firstSelectedCard;
+                        OdwrocKarte(i);
+
                     }
+
+                    firstSelectedButton.BorderThickness = new Thickness(0); ;
+                    secondSelectedButton.BorderThickness = new Thickness(0);
+                    firstSelectedCard = null;
+                    secondSelectedCard = null;
                 }
-                else
-                {//usuwanie jak za duzo
-                    card.IsChecked = false;
-                    button.BorderThickness = new Thickness(0);
-
-                    button.BorderThickness = new Thickness(3);
-
-                     button.BorderBrush = Brushes.Red;
-                    
-                    tabValue.Remove(tabValue[0]);
-                    tabValue.Add(card.Value);
-
-                }
-
             }
-            else
-            {
+        }
 
-                //MessageBox.Show(tabValue.Count().ToString() + ", " + tabValue[0] + "abba");
-                tabValue.Remove(card.Value);
-                button.BorderThickness = new Thickness(0);
-               // firstSelectedCard = null;
 
-            }
 
-        } 
 
         private void TasujKarty()
         {
@@ -197,11 +154,10 @@ namespace pasjans
         }
         private void RozdajKarty(object sender, RoutedEventArgs e)
         {
-                            tabValue.Clear();
+            tabValue.Clear();
             iloscRozdan = 0;
             newkard.IsEnabled = true;
             IloscKard = 104;
-            RozdajKartyOdwrot(5);
             tabliaZbior.Add(talia);
             tabliaZbior.Add(talia2);
             tabliaZbior.Add(talia3);
@@ -212,7 +168,8 @@ namespace pasjans
             tabliaZbior.Add(talia8);
             tabliaZbior.Add(talia9);
             tabliaZbior.Add(talia10);
-      
+            RozdajKartyOdwrot(5);
+
 
         }
         private void RozdajKartyOdwrot(int x)
@@ -229,53 +186,55 @@ namespace pasjans
             talia10.Clear();
             for (int i = 0; i < x; i++)
             {
-                talia.Add(new Card(talia));
-                talia2.Add(new Card(talia2));
-                talia3.Add(new Card(talia3));
-                talia4.Add(new Card(talia4));
+                talia.Add(new Card(0));
+                talia2.Add(new Card(1));
+                talia3.Add(new Card(2));
+                talia4.Add(new Card(3));
 
             }
             for (int i = 0; i < x - 1; i++)
             {
-                talia5.Add(new Card(talia5));
-                talia6.Add(new Card(talia6));
-                talia7.Add(new Card(talia7));
-                talia8.Add(new Card(talia8));
-                talia9.Add(new Card(talia9));
-                talia10.Add(new Card(talia10));
+                talia5.Add(new Card(4));
+                talia6.Add(new Card(5));
+                talia7.Add(new Card(6));
+                talia8.Add(new Card(7));
+                talia9.Add(new Card(8));
+                talia10.Add(new Card(9));
 
             }
             TasujKarty();
-            OdwrocKarte(talia);
-            OdwrocKarte(talia2);
-            OdwrocKarte(talia3);
-            OdwrocKarte(talia4);
-            OdwrocKarte(talia5);
-            OdwrocKarte(talia6);
-            OdwrocKarte(talia7);
-            OdwrocKarte(talia8);
-            OdwrocKarte(talia9);
-            OdwrocKarte(talia10);
+            OdwrocKarte(0);
+            OdwrocKarte(1);
+            OdwrocKarte(2);
+            OdwrocKarte(3);
+            OdwrocKarte(4);
+            OdwrocKarte(5);
+            OdwrocKarte(6);
+            OdwrocKarte(7);
+            OdwrocKarte(8);
+            OdwrocKarte(9);
         }
 
-        private void OdwrocKarte(ObservableCollection<Card> tal)
+        private void OdwrocKarte(int tal)
         {
-           
+
             if (taliaPod.Count() == 0)
             {
                 MessageBox.Show("Najpierw zacznij gre!", "Zacznij Gre", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
-            if(tal.Count() == 0) {
-            tal.Add(new Card(tal));
-                tal[0] = new Card(tal) { Value = 14, isOdw = true };
-            }else
+            if (tabliaZbior[tal].Count() == 0)
             {
-                int lastIndex = tal.Count - 1;
+                tabliaZbior[tal].Add(new Card(tal));
+                tabliaZbior[tal][0] = new Card(tal) { Value = 14, isOdw = true };
+            }
+            else
+            {
+                int lastIndex = tabliaZbior[tal].Count - 1;
                 var random = new Random();
                 int x = random.Next(0, IloscKard);
                 int a = taliaPod[x];
-                tal[lastIndex] = new Card(tal) { Value = a, isOdw = true };
+                tabliaZbior[tal][lastIndex] = new Card(tal) { Value = a, isOdw = true };
                 taliaPod.RemoveAt(x);
                 IloscKard--;
             }
@@ -295,38 +254,39 @@ namespace pasjans
 
                 }
 
-                talia.Add(new Card(talia));
-            talia2.Add(new Card(talia2));
-            talia3.Add(new Card(talia3));
-            talia4.Add(new Card(talia4));
-            talia5.Add(new Card(talia5));
-            talia6.Add(new Card(talia6));
-            talia7.Add(new Card(talia7));
-            talia8.Add(new Card(talia8));
-            talia9.Add(new Card(talia9));
-            talia10.Add(new Card(talia10));
-            OdwrocKarte(talia);
-            OdwrocKarte(talia2);
-            OdwrocKarte(talia3);
-            OdwrocKarte(talia4);
-            OdwrocKarte(talia5);
-            OdwrocKarte(talia6);
-            OdwrocKarte(talia7);
-            OdwrocKarte(talia8);
-            OdwrocKarte(talia9);
-            OdwrocKarte(talia10);
-            iloscRozdan++;
-            if (iloscRozdan == 5)   newkard.IsEnabled = false;
+                talia.Add(new Card(0));
+                talia2.Add(new Card(1));
+                talia3.Add(new Card(2));
+                talia4.Add(new Card(3));
+                talia5.Add(new Card(4));
+                talia6.Add(new Card(5));
+                talia7.Add(new Card(6));
+                talia8.Add(new Card(7));
+                talia9.Add(new Card(8));
+                talia10.Add(new Card(9));
+                OdwrocKarte(0);
+                OdwrocKarte(1);
+                OdwrocKarte(2);
+                OdwrocKarte(3);
+                OdwrocKarte(4);
+                OdwrocKarte(5);
+                OdwrocKarte(6);
+                OdwrocKarte(7);
+                OdwrocKarte(8);
+                OdwrocKarte(9);
+                iloscRozdan++;
+                if (iloscRozdan == 5) newkard.IsEnabled = false;
 
-            } }
+            }
+        }
         private void IfWin()
         {
 
         }
 
 
-        }
-
-
     }
+
+
+}
 
