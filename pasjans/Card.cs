@@ -8,7 +8,7 @@ namespace pasjans
         private int _value;
         public bool isOdw = false;
         private bool _IsSelected;
-        private bool isChecked;
+
         public ObservableCollection<Card> Talia { get; set; }
         public int naztali;
 
@@ -17,15 +17,7 @@ namespace pasjans
             this.naztali = naztali;
         }
 
-        public bool IsChecked
-        {
-            get { return isChecked; }
-            set
-            {
-                isChecked = value;
-                OnPropertyChanged("IsChecked");
-            }
-        }
+
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
