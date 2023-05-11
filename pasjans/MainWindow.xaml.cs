@@ -26,6 +26,8 @@ namespace pasjans
         public ObservableCollection<int> taliaPod { get; set; }
         public ObservableCollection<int> tabValue { get; set; }
 
+        public Image[] takes;
+
         private ObservableCollection<Card> collection = new ObservableCollection<Card>();
 
         public ObservableCollection<ObservableCollection<Card>> taliaZbior { get; set; }
@@ -35,7 +37,8 @@ namespace pasjans
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = this;
+            DataContext = this; 
+            takes = new Image[] { take1, take2, take3, take4, take5, take6, take7, take8 };
             tabValue = new ObservableCollection<int>();
             talia = new ObservableCollection<Card>();
             talia2 = new ObservableCollection<Card>();
@@ -51,13 +54,14 @@ namespace pasjans
             taliaPod = new ObservableCollection<int>();
             int IloscKard;
             int iloscRozdan;
-
+           
+         
         }
         private Card firstSelectedCard;
         private Button firstSelectedButton;
         private Card secondSelectedCard;
         private Button secondSelectedButton;
-
+        int c = 0;
 
         private void Button_Card_Click(object sender, RoutedEventArgs e)
         {
@@ -110,7 +114,7 @@ namespace pasjans
                         //  MessageBox.Show("----------------------------------------------------------");
                         for (int i = 0; i < collection.Count(); i++)
                         {
-                            // MessageBox.Show(collection[i].Value.ToString());
+                         //   MessageBox.Show(collection[i].Value.ToString());
                         }
                         //  MessageBox.Show("----------------------------------------------------------");
                         secondSelectedButton = button;
@@ -149,11 +153,14 @@ namespace pasjans
                     secondSelectedButton.BorderThickness = new Thickness(0);
                     firstSelectedCard = null;
                     secondSelectedCard = null;
+                    MessageBox.Show(collection.Count().ToString());
+                    if (collection.Count() == 3)
+                    {
+                        takes[c].Visibility = Visibility.Visible;
+                        c += 1;
+                    }
                 }
-                else
-                {
-
-                }
+               
             }
         }
 
@@ -305,6 +312,7 @@ namespace pasjans
         private void IfWin()
         {
 
+         
         }
 
 
