@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Threading;
 
 namespace pasjans
 {
@@ -34,10 +35,12 @@ namespace pasjans
         public int iloscRozdan;
         public Card cards;
         public int IloscKard;
+        DispatcherTimer timer = new DispatcherTimer();
         public MainWindow()
         {
             InitializeComponent();
             DataContext = this;
+            timer.Tick += Timer_Tick;
             takes = new Image[] { take1, take2, take3, take4, take5, take6, take7, take8 };
             tabValue = new ObservableCollection<int>();
             talia = new ObservableCollection<Card>();
@@ -54,6 +57,7 @@ namespace pasjans
             taliaPod = new ObservableCollection<int>();
             int IloscKard;
             int iloscRozdan;
+            int ProgressToEndGame; timer.Interval = TimeSpan.FromMilliseconds(1000);
 
 
         }
@@ -61,8 +65,10 @@ namespace pasjans
         private Button firstSelectedButton;
         private Card secondSelectedCard;
         private Button secondSelectedButton;
-        int c = 0;
-        int d = 1;
+        int MakeVisilbe = 0;
+        int FittingCartsInColumn = 1;
+        int ProgressToEndGame = 0;
+        int counter = 0;
 
         private void Button_Card_Click(object sender, RoutedEventArgs e)
         {
@@ -79,7 +85,7 @@ namespace pasjans
                     firstSelectedButton = button;
                     firstSelectedCard = card;
                     button.BorderThickness = new Thickness(3);
-                    button.BorderBrush = Brushes.Yellow;
+                    button.BorderBrush = Brushes.Red;
                 }
                 else if (firstSelectedCard != null)
                 {
@@ -152,8 +158,10 @@ namespace pasjans
                         IfKupkaPelna(talia7);
                         IfKupkaPelna(talia8);
                         IfKupkaPelna(talia9);
+                        IfKupkaPelna(talia10);
 
                         OdwrocKarte(second);
+                        OdwrocKarte(first);
 
 
                     }
@@ -171,30 +179,50 @@ namespace pasjans
 
         private void IfKupkaPelna(ObservableCollection<Card> talia)
         {
-            int p = 0;
+            int CardToRemove = 0;
             if (talia.Count() >= 13)
             {
-                for (int i = 0; i < talia.Count() - 1; i++)
+                FittingCartsInColumn = 1;
+                for (int i = 1; i < talia.Count(); i++)
                 {
-                    p = i;
-                    MessageBox.Show(d.ToString());
-                    if (talia[i].Value - 1 == talia[i + 1].Value)
+                    CardToRemove = i;
+                    if (talia[i - 1].Value == talia[i].Value + 1)
                     {
-                        d++;
-                        if (d == 13)
+                        FittingCartsInColumn++;
+                        if (FittingCartsInColumn == 13)
                         {
-                            for (int j = p - 13; j <= p; j++)
+                            for (int j = CardToRemove; j > CardToRemove - 13; j--)
                             {
                                 talia.RemoveAt(j);
                             }
-                            takes[c].Visibility = Visibility.Visible;
-                            c += 1;
-                            d = 1;
+                            takes[MakeVisilbe].Visibility = Visibility.Visible;
+                            MakeVisilbe += 1;
+                            FittingCartsInColumn = 1;
+                            ProgressToEndGame += 1;
+                            if (ProgressToEndGame == 1)
+                            {
+                                timer.Stop();
+
+                                TimeSpan timeElapsed = TimeSpan.FromSeconds(counter);
+                                string times = string.Format("{0:D2}:{1:D2}", timeElapsed.Minutes, timeElapsed.Seconds);
+
+                                MessageBoxResult result = MessageBox.Show("Gratulacje! \n Wygrałeś grę! \n twój czas to: " + times + "\n chcesz zagrać jeszcze raz?", "Wygrana!", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+
+                                if (result == MessageBoxResult.Yes)
+                                {
+                                    RozdajKarty();
+                                }
+                                else
+                                {
+                                    this.Close();
+                                }
+                            }
                         }
                     }
                     else
                     {
-                        d = 1;
+                        FittingCartsInColumn = 1;
                     }
                 }
             }
@@ -213,8 +241,22 @@ namespace pasjans
                 }
             }
         }
-        private void RozdajKarty(object sender, RoutedEventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
+            counter++;
+            TimeSpan timeElapsed = TimeSpan.FromSeconds(counter);
+            time.Text = string.Format("{0:D2}:{1:D2}", timeElapsed.Minutes, timeElapsed.Seconds);
+
+        }
+        private void RozdajKartyButt(object sender, RoutedEventArgs e)
+        {
+            RozdajKarty();
+        }
+        private void RozdajKarty()
+        {
+            counter = 0;
+            timer.Start();
+            ProgressToEndGame = 0;
             tabValue.Clear();
             iloscRozdan = 0;
             newkard.IsEnabled = true;
@@ -229,7 +271,16 @@ namespace pasjans
             taliaZbior.Add(talia8);
             taliaZbior.Add(talia9);
             taliaZbior.Add(talia10);
-            RozdajKartyOdwrot(5);
+            RozdajKartyOdwrot(6);
+            if (MakeVisilbe > 0)
+            {
+                for (int i = 0; i <= 7; i++)
+                {
+                    takes[i].Visibility = Visibility.Hidden;
+                }
+
+                MakeVisilbe = 0;
+            }
 
 
         }
@@ -279,11 +330,11 @@ namespace pasjans
         private void OdwrocKarte(int tal)
         {
 
-            if (taliaPod.Count() == 0)
-            {
-                MessageBox.Show("Najpierw zacznij gre!", "Zacznij Gre", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-            else
+            //  if (taliaPod.Count() == 0)
+            // {
+            //        MessageBox.Show("Najpierw zacznij gre!", "Zacznij Gre", MessageBoxButton.OK, MessageBoxImage.Warning);
+            //   }
+            //  else
             if (taliaZbior[tal].Count() == 0)
             {
                 taliaZbior[tal].Add(new Card(tal));
@@ -307,6 +358,14 @@ namespace pasjans
 
         private void Kupka(object sender, RoutedEventArgs e)
         {
+            for (int j = 0; j < taliaZbior.Count(); j++)
+            {
+                if (taliaZbior[j][0].Value == 14)
+                {
+                    MessageBox.Show("Masz puste pola!", "Puste pola", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+            }
             if (taliaPod.Count() == 0)
             {
                 MessageBox.Show("Najpierw zacznij gre!", "Zacznij Gre", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -339,15 +398,22 @@ namespace pasjans
                 OdwrocKarte(8);
                 OdwrocKarte(9);
                 iloscRozdan++;
+                IfKupkaPelna(talia);
+                IfKupkaPelna(talia2);
+                IfKupkaPelna(talia3);
+                IfKupkaPelna(talia4);
+                IfKupkaPelna(talia5);
+                IfKupkaPelna(talia6);
+                IfKupkaPelna(talia7);
+                IfKupkaPelna(talia8);
+                IfKupkaPelna(talia9);
+                IfKupkaPelna(talia10);
+
                 if (iloscRozdan == 5) newkard.IsEnabled = false;
 
             }
         }
-        private void IfWin()
-        {
 
-
-        }
 
 
     }
