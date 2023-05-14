@@ -25,7 +25,6 @@ namespace pasjans
         public ObservableCollection<Card> talia9 { get; set; }
         public ObservableCollection<Card> talia10 { get; set; }
         public ObservableCollection<int> taliaPod { get; set; }
-        public ObservableCollection<int> tabValue { get; set; }
 
         public Image[] takes;
 
@@ -42,7 +41,7 @@ namespace pasjans
             DataContext = this;
             timer.Tick += Timer_Tick;
             takes = new Image[] { take1, take2, take3, take4, take5, take6, take7, take8 };
-            tabValue = new ObservableCollection<int>();
+
             talia = new ObservableCollection<Card>();
             talia2 = new ObservableCollection<Card>();
             talia3 = new ObservableCollection<Card>();
@@ -57,7 +56,8 @@ namespace pasjans
             taliaPod = new ObservableCollection<int>();
             int IloscKard;
             int iloscRozdan;
-            int ProgressToEndGame; timer.Interval = TimeSpan.FromMilliseconds(1000);
+            int ProgressToEndGame;
+            timer.Interval = TimeSpan.FromMilliseconds(1000);
 
 
         }
@@ -72,14 +72,12 @@ namespace pasjans
 
         private void Button_Card_Click(object sender, RoutedEventArgs e)
         {
-            //CreateObservableCollection();
             var button = sender as Button;
             var card = button.DataContext as Card;
 
             if (card.isOdw == true)
             {
                 ObservableCollection<Card> curTalia = taliaZbior[card.naztali];
-                // if(tabValue.Count() == 0)
                 if (firstSelectedCard == null && curTalia.ElementAt(curTalia.Count() - 1) == card)
                 {
                     firstSelectedButton = button;
@@ -100,7 +98,6 @@ namespace pasjans
                             {
 
                                 collection.Add(curTalia[i]);
-                                //MessageBox.Show(curTalia[i].Value.ToString() + ", " + i);
                                 WybCardVal--;
                             }
                             else
@@ -111,7 +108,6 @@ namespace pasjans
                         }
                         if (curTalia[i] == card)
                         {
-                            //    MessageBox.Show(card.Value.ToString() + ", " + i);
                             WybCardVal = card.Value;
                             collection.Add(card);
                         }
@@ -119,13 +115,9 @@ namespace pasjans
                     }
                     if (collection.Count() > 0)
                     {
-                        for (int i = 0; i < collection.Count(); i++)
-                        {
-                            //   MessageBox.Show(collection[i].Value.ToString());
-                        }
+
                         secondSelectedButton = button;
                         secondSelectedCard = card;
-                        //tabValue.Add(card.Value);
                         button.BorderThickness = new Thickness(3);
                         button.BorderBrush = Brushes.Red;
                     }
@@ -170,7 +162,6 @@ namespace pasjans
                     secondSelectedButton.BorderThickness = new Thickness(0);
                     firstSelectedCard = null;
                     secondSelectedCard = null;
-                    // MessageBox.Show(collection.Count().ToString());
 
                 }
 
@@ -199,14 +190,14 @@ namespace pasjans
                             MakeVisilbe += 1;
                             FittingCartsInColumn = 1;
                             ProgressToEndGame += 1;
-                            if (ProgressToEndGame == 1)
+                            if (ProgressToEndGame == 8)
                             {
                                 timer.Stop();
 
                                 TimeSpan timeElapsed = TimeSpan.FromSeconds(counter);
                                 string times = string.Format("{0:D2}:{1:D2}", timeElapsed.Minutes, timeElapsed.Seconds);
 
-                                MessageBoxResult result = MessageBox.Show("Gratulacje! \n Wygrałeś grę! \n twój czas to: " + times + "\n chcesz zagrać jeszcze raz?", "Wygrana!", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                                MessageBoxResult result = MessageBox.Show("Gratulacje! \n Wygrałeś grę! \n twój czas to: " + times + "\n chcesz zagrać jeszcze raz?", "Wygrana!", MessageBoxButton.YesNo);
 
 
                                 if (result == MessageBoxResult.Yes)
@@ -257,7 +248,6 @@ namespace pasjans
             counter = 0;
             timer.Start();
             ProgressToEndGame = 0;
-            tabValue.Clear();
             iloscRozdan = 0;
             newkard.IsEnabled = true;
             IloscKard = 104;
@@ -329,12 +319,6 @@ namespace pasjans
 
         private void OdwrocKarte(int tal)
         {
-
-            //  if (taliaPod.Count() == 0)
-            // {
-            //        MessageBox.Show("Najpierw zacznij gre!", "Zacznij Gre", MessageBoxButton.OK, MessageBoxImage.Warning);
-            //   }
-            //  else
             if (taliaZbior[tal].Count() == 0)
             {
                 taliaZbior[tal].Add(new Card(tal));

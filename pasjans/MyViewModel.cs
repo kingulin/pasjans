@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace pasjans
 {
@@ -21,7 +16,6 @@ namespace pasjans
                 {
                     IsButton2Selected = false;
                 }
-             //   SetProperty(ref _isButton1Selected, value);
             }
         }
 
@@ -34,7 +28,6 @@ namespace pasjans
                 {
                     IsButton1Selected = false;
                 }
-              //  SetProperty(ref _isButton2Selected, value);
             }
         }
 

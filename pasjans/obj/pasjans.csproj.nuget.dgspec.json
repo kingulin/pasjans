@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kingu\\Desktop\\pasjans\\pasjans\\pasjans\\pasjans.csproj": {}
+    "C:\\Users\\kingu\\Source\\Repos\\kingulin\\pasjans\\pasjans\\pasjans.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kingu\\Desktop\\pasjans\\pasjans\\pasjans\\pasjans.csproj": {
+    "C:\\Users\\kingu\\Source\\Repos\\kingulin\\pasjans\\pasjans\\pasjans.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kingu\\Desktop\\pasjans\\pasjans\\pasjans\\pasjans.csproj",
+        "projectUniqueName": "C:\\Users\\kingu\\Source\\Repos\\kingulin\\pasjans\\pasjans\\pasjans.csproj",
         "projectName": "pasjans",
-        "projectPath": "C:\\Users\\kingu\\Desktop\\pasjans\\pasjans\\pasjans\\pasjans.csproj",
+        "projectPath": "C:\\Users\\kingu\\Source\\Repos\\kingulin\\pasjans\\pasjans\\pasjans.csproj",
         "packagesPath": "C:\\Users\\kingu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kingu\\Desktop\\pasjans\\pasjans\\pasjans\\obj\\",
+        "outputPath": "C:\\Users\\kingu\\Source\\Repos\\kingulin\\pasjans\\pasjans\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
