@@ -393,7 +393,10 @@ namespace pasjans
                 IfKupkaPelna(talia9);
                 IfKupkaPelna(talia10);
 
-                if (iloscRozdan == 5) newkard.IsEnabled = false;
+                if (iloscRozdan == 5) {
+                newkard.IsEnabled = false;
+                newkard.Opacity = 0;
+                    }
 
             }
         }
